@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   selectCategory,
   loadRestaurants,
-} from './actions';
+} from '../redux/actions';
 
-import { get } from './utils';
+import { get } from '../utils';
 
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ export default function CategoriesContainer() {
 
   return (
     <ul>
-      {categories.map((category) => (
+      {categories?.map((category) => (
         <li key={category.id}>
           <button
             type="button"

@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   selectRegion,
   loadRestaurants,
-} from './actions';
+} from '../redux/actions';
 
-import { get } from './utils';
+import { get } from '../utils';
 
 export default function RegionsContainer() {
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ export default function RegionsContainer() {
 
   return (
     <ul>
-      {regions.map((region) => (
+      {regions?.map((region) => (
         <li key={region.id}>
           <button
             type="button"
