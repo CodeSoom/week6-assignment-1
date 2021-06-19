@@ -9,3 +9,7 @@ export async function fetchCategories() {
 export async function fetchRestaurants() {
   return [];
 }
+
+export async function fetchRestaurant({ restaurantId }) {
+  return { id: restaurantId };
+}

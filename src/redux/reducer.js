@@ -1,11 +1,14 @@
-import { equal } from './utils';
+import { equal } from '../utils';
 
-const initialState = {
+export const initialState = {
   regions: [],
   categories: [],
   restaurants: [],
+  restaurant: null,
   selectedRegion: null,
   selectedCategory: null,
+  loginFileds: { email: '', password: '' },
+  accessToken: '',
 };
 
 const reducers = {
@@ -30,6 +33,19 @@ const reducers = {
     };
   },
 
+  setRestaurant(state, { payload: { restaurant } }) {
+    return {
+      ...state,
+      restaurant,
+    };
+  },
+
+  setAccessToken(state, { payload: { accessToken } }) {
+    return {
+      ...state,
+      accessToken,
+    };
+  },
   selectRegion(state, { payload: { regionId } }) {
     const { regions } = state;
     return {
@@ -45,6 +61,18 @@ const reducers = {
       selectedCategory: categories.find(equal('id', categoryId)),
     };
   },
+
+  changeLoginFiled(state, { payload: { name, value } }) {
+    const { loginFileds } = state;
+    return {
+      ...state,
+      loginFileds: {
+        ...loginFileds,
+        [name]: value,
+      },
+    };
+  },
+
 };
 
 function defaultReducer(state) {
